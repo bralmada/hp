@@ -367,9 +367,21 @@
   ]
  },
  {
+  "id": "gemini",
+  "type": "bookmark",
+  "name": "AI Gemini",
+  "url": "https://gemini.google.com/app?hl=pt-BR"
+ },
+ {
+  "id": "id-1783443005179-knqth",
+  "type": "bookmark",
+  "name": "Tim",
+  "url": "https://www.tim.com.br"
+ },
+ {
   "id": "f-tools",
   "type": "folder",
-  "emoji": "🛠️",
+  "emoji": "📁",
   "name": "Tools",
   "items": [
    {
@@ -429,17 +441,5 @@
     "url": "https://github.com/bralmada"
    }
   ]
- },
- {
-  "id": "gemini",
-  "type": "bookmark",
-  "name": "AI Gemini",
-  "url": "https://gemini.google.com/app?hl=pt-BR"
- },
- {
-  "id": "id-1783443005179-knqth",
-  "type": "bookmark",
-  "name": "Tim",
-  "url": "https://www.tim.com.br"
  }
 ]
