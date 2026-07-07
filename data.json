@@ -49,14 +49,14 @@
     "url": "https://atende.cemig.com.br/Login"
    },
    {
-    "id": "b3",
-    "name": "Claro Business",
-    "url": "https://minhaclaroempresas.claro.com.br"
-   },
-   {
     "id": "b2",
     "name": "Claro PF",
     "url": "https://auth.claro.com.br/authorize?client_id=INT_AA_PORTALUNICO&response_type=code&scope=openid+minha_claro_dig+minha_net+net_devices+net_profile&redirect_uri=https%3A%2F%2Fclaro.com.br%2Fminha%2Farea-logada%2Fauth%2Fcallback&grant_type=authorization_code&nonce=abc123"
+   },
+   {
+    "id": "b3",
+    "name": "Claro Business",
+    "url": "https://minhaclaroempresas.claro.com.br/#HomeLogada"
    },
    {
     "id": "b4",
@@ -446,7 +446,6 @@
   "id": "id-1783461675626-u682m",
   "type": "bookmark",
   "name": "Git (Hub)",
-  "url": "https://bralmada.github.io/hp/",
-  "icon": "https://github.com/bralmada/hp/blob/main/logo.png"
+  "url": "https://bralmada.github.io/hp/"
  }
 ]
