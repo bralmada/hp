@@ -445,7 +445,8 @@
  {
   "id": "id-1783461675626-u682m",
   "type": "bookmark",
-  "name": "Got (Hub)",
-  "url": "https://bralmada.github.io/hp/"
+  "name": "Git (Hub)",
+  "url": "https://bralmada.github.io/hp/",
+  "icon": "https://github.com/bralmada/hp/blob/main/logo.png"
  }
 ]
