@@ -1,11 +1,5 @@
 [
  {
-  "id": "gemini",
-  "type": "bookmark",
-  "name": "Gemini",
-  "url": "https://gemini.google.com/app?hl=pt-BR"
- },
- {
   "id": "f-cbs",
   "type": "folder",
   "emoji": "💈",
@@ -43,13 +37,6 @@
     "url": "https://yelsew.com.br/"
    }
   ]
- },
- {
-  "id": "id-1783568348443-ly4si",
-  "type": "bookmark",
-  "name": "Proton Mail",
-  "url": "https://mail.proton.me/u/1/inbox",
-  "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
  },
  {
   "id": "f-billing",
@@ -449,5 +436,18 @@
     "url": "http://www.wgsn.com/en/trading/fashion-buying"
    }
   ]
+ },
+ {
+  "id": "gemini",
+  "type": "bookmark",
+  "name": "Gemini",
+  "url": "https://gemini.google.com/app?hl=pt-BR"
+ },
+ {
+  "id": "id-1783568348443-ly4si",
+  "type": "bookmark",
+  "name": "Proton Mail",
+  "url": "https://mail.proton.me/u/1/inbox",
+  "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
  }
 ]
