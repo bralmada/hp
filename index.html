@@ -73,6 +73,13 @@ body {
 .ctx-item.danger { color: var(--danger); }
 .ctx-icon { width: 20px; text-align: center; flex-shrink: 0; }
 .ctx-sep { height: 1px; background: var(--sep); margin: 5px 0; }
+.ctx-head { display: flex; justify-content: flex-end; padding: 6px 8px 0; }
+.ctx-close {
+  width: 26px; height: 26px; border-radius: 50%; border: none;
+  background: var(--btn-bg); color: var(--text);
+  font-size: 13px; font-weight: 700; cursor: pointer; line-height: 1;
+}
+.ctx-close:hover { filter: brightness(1.2); }
 .ctx-menu { max-height: calc(100vh - 24px); overflow-y: auto; }
 .ctx-preview {
   display: grid; grid-template-columns: repeat(4, 62px);
@@ -136,6 +143,11 @@ h1.page-title { font-size: 27px; font-weight: 800; letter-spacing: -0.4px; }
   cursor: pointer; position: relative; user-select: none;
   -webkit-user-select: none; -webkit-touch-callout: none;
   transition: transform 0.12s;
+}
+.tile img {
+  pointer-events: none;                 /* trava: segurar+mover arrasta o tile (link), não a imagem */
+  -webkit-user-drag: none; user-drag: none;
+  -webkit-touch-callout: none;
 }
 .tile:hover:not(.edit-mode-tile) { transform: scale(1.05); }
 .tile.dragging { opacity: 0.35; }
@@ -245,12 +257,14 @@ h1.page-title { font-size: 27px; font-weight: 800; letter-spacing: -0.4px; }
 }
 .modal-cancel:hover { filter: brightness(1.15); }
 .modal-confirm:hover { filter: brightness(0.92); }
-.icon-auto-btn {
-  width: 100%; padding: 9px; border-radius: 10px; margin: -4px 0 10px;
-  border: 1px dashed var(--input-border); background: none; cursor: pointer;
-  font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--accent);
+.icon-row { display: flex; gap: 8px; align-items: stretch; margin-bottom: 10px; }
+.icon-pull-btn {
+  width: 46px; border-radius: 12px; flex-shrink: 0;
+  border: 1.5px dashed var(--input-border); background: var(--input-bg);
+  font-size: 20px; cursor: pointer; color: var(--accent);
 }
-.icon-auto-btn:hover { background: var(--tile-bg); }
+.icon-pull-btn:hover { background: var(--tile-bg); }
+.icon-row .modal-input { flex: 1; margin-bottom: 0; }
 
 /* ── Search ── */
 .search-bar { max-width: 680px; margin: 14px auto 0; padding: 0 16px; }
@@ -577,6 +591,17 @@ function rootDomain(host){                     // mail.proton.me → proton.me �
   const last2 = p.slice(-2).join('.');
   return SLD.has(last2) ? p.slice(-3).join('.') : last2;
 }
+function iconUrlToField(u){                    // campo mostra só o domínio quando é o template
+  if (!u) return '';
+  const m = u.match(/^https:\/\/www\.google\.com\/s2\/favicons\?[^\s]*domain=([^&\s]+)/);
+  return m ? decodeURIComponent(m[1]) : u;
+}
+function iconFieldToUrl(v){                    // domínio digitado → template embutido
+  v = (v || '').trim();
+  if (!v) return '';
+  if (/^(https?:|data:)/i.test(v)) return v;
+  return 'https://www.google.com/s2/favicons?sz=64&domain=' + v.replace(/^\/+|\/+$/g, '');
+}
 function autoIconUrl(rawUrl){                  // link embutido: usuário nunca digita o template
   const h = hostOf(normalizeUrl(rawUrl));
   const root = rootDomain(h);
@@ -720,6 +745,10 @@ function openCtx(x, y, entries){
   closeCtx();
   const m = document.createElement('div');
   m.className = 'ctx-menu'; m.id = 'ctx-menu';
+  const head = document.createElement('div'); head.className = 'ctx-head';
+  const xb = document.createElement('button'); xb.className = 'ctx-close'; xb.textContent = '✕';
+  xb.addEventListener('click', ev => { ev.stopPropagation(); closeCtx(); });
+  head.appendChild(xb); m.appendChild(head);
   for (const en of entries) {
     if (en.sep) { const s = document.createElement('div'); s.className = 'ctx-sep'; m.appendChild(s); continue; }
     if (en.preview) { const p = document.createElement('div'); p.className = 'ctx-preview'; p.innerHTML = en.preview; m.appendChild(p); continue; }
@@ -735,6 +764,7 @@ function openCtx(x, y, entries){
   m.style.top  = Math.max(8, Math.min(y, innerHeight - r.height - 8)) + 'px';
 }
 addEventListener('click',  closeCtx);
+addEventListener('touchstart', e => { if (!e.target.closest('.ctx-menu')) closeCtx(); }, { passive: true });
 addEventListener('scroll', closeCtx, true);
 addEventListener('keydown', e => { if (e.key === 'Escape') closeCtx(); });
 
@@ -806,15 +836,17 @@ function ctxForTile(x, y, tile){
       if (urls.length > 1) setTimeout(() => alert('Se abriu só 1 aba, autorize pop-ups deste site no navegador.'), 400);
     }});
     entries.push({ sep: true });
-    entries.push({ icon:'✐', label:'Renomear', action: () => { modal = { mode:'edit', item: it }; render(); } });
+    entries.push({ icon:'✏️', label:'Editar', action: () => { modal = { mode:'edit', item: it }; render(); } });
+    entries.push({ icon:'📂', label:'Mover', action: () => ctxMoveMenu(x, y, it) });
     entries.push({ icon:'↕', label:'Ordenar A→Z (dentro)', action: () => { sortListAZ(it.items || [], false); saveData(); render(); } });
     entries.push({ sep: true });
     entries.push({ icon:'🗑', label:'Apagar', danger:true, action: () => deleteItemById(it.id) });
   } else {
     entries.push({ icon:'⧉', label:'Abrir em Nova Aba', action: () => { if (it.url) window.open(it.url, '_blank'); } });
     entries.push({ sep: true });
-    entries.push({ icon:'✐', label:'Renomear', action: () => { modal = { mode:'edit', item: it }; render(); } });
-    entries.push({ icon:'🪄', label:'Puxar ícone do domínio', action: () => {
+    entries.push({ icon:'✏️', label:'Editar', action: () => { modal = { mode:'edit', item: it }; render(); } });
+    entries.push({ icon:'📂', label:'Mover', action: () => ctxMoveMenu(x, y, it) });
+    entries.push({ icon:'🪄', label:'Puxar Ícone', action: () => {
       const a = autoIconUrl(it.url);
       if (a) { it.icon = a; saveData(); render(); }
     }});
@@ -823,6 +855,28 @@ function ctxForTile(x, y, tile){
     entries.push({ icon:'🗑', label:'Apagar', danger:true, action: () => deleteItemById(it.id) });
   }
   openCtx(x, y, entries);
+}
+function ctxMoveMenu(x, y, it){
+  const entries = [{ icon:'‹', label:'Voltar', action: () => ctxMenuAgain(x, y, it) }, { sep: true }];
+  entries.push({ icon:'⌂', label:'Página inicial', action: () => moveItem(it.id, '') });
+  for (const f of allFolders()) {
+    if (it.id === f.id) continue;
+    if (it.type === 'folder' && isDescendant(it.id, f.id)) continue;
+    entries.push({ icon:'📁', label: f.label, action: () => moveItem(it.id, f.id) });
+  }
+  entries.push({ sep: true });
+  entries.push({ icon:'➕', label:'Nova Pasta…', action: () => {
+    const n = (prompt('Nome da nova pasta:') || '').trim();
+    if (!n) return;
+    const nf = { id: genId(), type:'folder', emoji:'', name: n, items: [] };
+    items.push(nf);
+    moveItem(it.id, nf.id);
+  }});
+  openCtx(x, y, entries);
+}
+function ctxMenuAgain(x, y, it){               // reabre o menu principal do item
+  const tile = document.querySelector(`.tile[data-id="${it.id}"]`);
+  if (tile) ctxForTile(x, y, tile);
 }
 function ctxForBackground(x, y){
   openCtx(x, y, [
@@ -918,10 +972,10 @@ function renderFolderPreview(folder) {
   const cells = previews.map(sub => {
     if (sub.type === 'folder') return `<div class="mini-folder">${sub.emoji || '📁'}</div>`;
     const l = (sub.name||'?')[0].toUpperCase();
-    if (sub.icon) return `<img src="${sub.icon.replace(/"/g,'&quot;')}" data-letter="${l}" onerror="miniImgErr(this)" alt="">`;
+    if (sub.icon) return `<img draggable="false" src="${sub.icon.replace(/"/g,'&quot;')}" data-letter="${l}" onerror="miniImgErr(this)" alt="">`;
     const h = hostOf(sub.url);
     return h
-      ? `<img src="${favSrc(sub.url)}" data-host="${h}" data-stage="0" data-letter="${l}" onload="imgLoaded(this)" onerror="miniImgErr(this)" alt="">`
+      ? `<img draggable="false" src="${favSrc(sub.url)}" data-host="${h}" data-stage="0" data-letter="${l}" onload="imgLoaded(this)" onerror="miniImgErr(this)" alt="">`
       : `<div class="mini-fallback">${l}</div>`;
   }).join('');
   return `<div class="folder-preview">${cells}</div>`;
@@ -929,10 +983,10 @@ function renderFolderPreview(folder) {
 
 function renderFavicon(item) {
   const l = (item.name||'?')[0].toUpperCase();
-  if (item.icon) return `<img class="tile-favicon" src="${item.icon.replace(/"/g,'&quot;')}" data-letter="${l}" onerror="tileImgErr(this)" alt="">`;
+  if (item.icon) return `<img class="tile-favicon" draggable="false" src="${item.icon.replace(/"/g,'&quot;')}" data-letter="${l}" onerror="tileImgErr(this)" alt="">`;
   const h = hostOf(item.url);
   return h
-    ? `<img class="tile-favicon" src="${favSrc(item.url)}" data-host="${h}" data-stage="0" data-letter="${l}" onload="imgLoaded(this)" onerror="tileImgErr(this)" alt="">`
+    ? `<img class="tile-favicon" draggable="false" src="${favSrc(item.url)}" data-host="${h}" data-stage="0" data-letter="${l}" onload="imgLoaded(this)" onerror="tileImgErr(this)" alt="">`
     : `<div class="tile-fallback">${l}</div>`;
 }
 
@@ -960,8 +1014,11 @@ function renderModal() {
       <div class="modal-label">Nome</div>
       <input class="modal-input" id="form-name" placeholder="Nome" value="${it ? it.name.replace(/"/g,'&quot;') : ''}">
       ${!isFolder ? `<div class="modal-label">URL</div><input class="modal-input" id="form-url" placeholder="URL (https://...)" value="${it ? (it.url||'').replace(/"/g,'&quot;') : 'https://'}">
-      <div class="modal-label">Ícone (URL, opcional)</div><input class="modal-input" id="form-icon" placeholder="https://.../logo.png — vazio = automático" value="${it ? (it.icon||'').replace(/"/g,'&quot;') : ''}">
-      <button type="button" class="icon-auto-btn" id="btn-auto-icon">🪄 Puxar ícone do domínio principal</button>` : ''}
+      <div class="modal-label">Puxar Ícone*</div>
+      <div class="icon-row">
+        <button type="button" class="icon-pull-btn" id="btn-auto-icon" title="Puxar ícone do domínio principal">🪄</button>
+        <input class="modal-input" id="form-icon" placeholder="dominio.com — vazio = automático" value="${it ? iconUrlToField(it.icon||'').replace(/"/g,'&quot;') : ''}">
+      </div>` : ''}
       <div class="modal-label">Pasta</div>
       <select class="modal-select" id="form-folder">
         <option value="">🏠 Início</option>
@@ -1014,10 +1071,10 @@ function attachEvents() {
   });
   document.getElementById('btn-auto-icon')?.addEventListener('click', () => {
     const u = document.getElementById('form-url')?.value;
-    const auto = autoIconUrl(u);
-    if (!auto) { alert('Preencha a URL primeiro.'); return; }
+    const root = rootDomain(hostOf(normalizeUrl(u)));
+    if (!root) { alert('Preencha a URL primeiro.'); return; }
     const f = document.getElementById('form-icon');
-    if (f) f.value = auto;
+    if (f) f.value = root;
   });
   document.getElementById('back-btn')?.addEventListener('click', () => { path.pop(); render(); });
   document.getElementById('search-input')?.addEventListener('input', e => {
@@ -1146,7 +1203,7 @@ function submitModal() {
     if (isFolder) it.emoji = (document.getElementById('form-emoji')?.value || '').trim();
     else {
       it.url = normalizeUrl(document.getElementById('form-url')?.value);
-      it.icon = (document.getElementById('form-icon')?.value || '').trim();
+      it.icon = iconFieldToUrl(document.getElementById('form-icon')?.value);
       if (!it.icon) delete it.icon;
     }
     modal = null; saveData();
@@ -1161,7 +1218,7 @@ function submitModal() {
   } else {
     novo = { id: genId(), type:'bookmark', name,
              url: normalizeUrl(document.getElementById('form-url')?.value) };
-    const ic = (document.getElementById('form-icon')?.value || '').trim();
+    const ic = iconFieldToUrl(document.getElementById('form-icon')?.value);
     if (ic) novo.icon = ic;
   }
   const dest = destId ? findItem(destId)?.items : items;
