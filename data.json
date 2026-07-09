@@ -375,6 +375,12 @@
   ]
  },
  {
+  "id": "id-1783434925970-yt0cu",
+  "type": "bookmark",
+  "name": "GitHub (hub)",
+  "url": "https://github.com"
+ },
+ {
   "id": "f-tools",
   "type": "folder",
   "emoji": "🛠️",
@@ -444,11 +450,5 @@
   "name": "Proton Mail",
   "url": "https://mail.proton.me/u/1/inbox",
   "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
- },
- {
-  "id": "id-1783434925970-yt0cu",
-  "type": "bookmark",
-  "name": "GitHub (hub)",
-  "url": "https://github.com"
  }
 ]
