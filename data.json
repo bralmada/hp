@@ -6,6 +6,12 @@
   "name": "AI",
   "items": [
    {
+    "id": "id-1784006811458-r61c0jto",
+    "type": "bookmark",
+    "name": "ChatGPT",
+    "url": "https://chatgpt.com/"
+   },
+   {
     "id": "id-1784004043458-6xu6d6pd",
     "type": "bookmark",
     "name": "DeepSeek",
@@ -18,22 +24,16 @@
     "url": "https://gemini.google.com/app?hl=pt-BR"
    },
    {
-    "id": "id-1783970466810-8cs6q",
-    "type": "bookmark",
-    "name": "MetaAi",
-    "url": "https://www.meta.ai/"
-   },
-   {
-    "id": "id-1784006811458-r61c0jto",
-    "type": "bookmark",
-    "name": "ChatGPT",
-    "url": "https://chatgpt.com/"
-   },
-   {
     "id": "id-1784006831530-32c9y1aa",
     "type": "bookmark",
     "name": "Grok",
     "url": "https://grok.com/"
+   },
+   {
+    "id": "id-1783970466810-8cs6q",
+    "type": "bookmark",
+    "name": "MetaAi",
+    "url": "https://www.meta.ai/"
    }
   ]
  },
