@@ -437,5 +437,12 @@
   "name": "Proton Mail",
   "url": "https://mail.proton.me/u/1/inbox",
   "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
+ },
+ {
+  "id": "id-1784018965031-h466swjy",
+  "type": "folder",
+  "emoji": "🗝️",
+  "name": "Consultor",
+  "items": []
  }
 ]
