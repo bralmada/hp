@@ -439,12 +439,6 @@
   "url": "https://www.escolavirtual.gov.br/"
  },
  {
-  "id": "gemini",
-  "type": "bookmark",
-  "name": "Gemini",
-  "url": "https://gemini.google.com/app?hl=pt-BR"
- },
- {
   "id": "id-1783568348443-ly4si",
   "type": "bookmark",
   "name": "Proton Mail",
@@ -468,6 +462,12 @@
     "type": "bookmark",
     "name": "MetaAi",
     "url": "https://www.meta.ai/"
+   },
+   {
+    "id": "gemini",
+    "type": "bookmark",
+    "name": "Gemini",
+    "url": "https://gemini.google.com/app?hl=pt-BR"
    }
   ]
  }
