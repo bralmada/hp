@@ -396,6 +396,11 @@ h1.page-title { font-size: 27px; font-weight: 800; letter-spacing: -0.4px; }
 .tile-count { font-size: 10.5px; color: var(--text2); margin-top: 1px; }
 
 /* ── Ícones SVG (sprite inline, herda a cor do tema) ── */
+.sync .icon { width: 13px; height: 13px; vertical-align: -2.5px; }
+.offline-banner .icon { width: 14px; height: 14px; vertical-align: -3px; }
+.empty-folder .icon { width: 22px; height: 22px; vertical-align: -5px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }
 .icon { width: 16px; height: 16px; vertical-align: -3px; flex-shrink: 0; }
 .toolbar .edit-btn, .foot-btn, .ctx-close, .sel-bar button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
 .ctx-icon .icon { width: 15px; height: 15px; vertical-align: -2px; }
@@ -486,12 +491,17 @@ h1.page-title { font-size: 27px; font-weight: 800; letter-spacing: -0.4px; }
   <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
   <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <symbol id="i-folder-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+  <symbol id="i-sync-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 15-5.5 5.5L9 18"/><path d="M5.516 16.07A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 3.501 7.327"/></symbol>
+  <symbol id="i-sync-err" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12v4"/><path d="M12 20h.01"/><path d="M8.128 16.949A7 7 0 1 1 15.71 8h1.79a1 1 0 0 1 0 9h-1.642"/></symbol>
+  <symbol id="i-sync-run" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.94 5.274A7 7 0 0 1 15.71 10h1.79a4.5 4.5 0 0 1 4.222 6.057"/><path d="M18.796 18.81A4.5 4.5 0 0 1 17.5 19H9A7 7 0 0 1 5.79 5.78"/><path d="m2 2 20 20"/></symbol>
 </svg>
 
 <div id="app"></div>
 
 <script>
-const sv = id => `<svg class="icon" aria-hidden="true"><use href="#${id}"/></svg>`;
+const sv = (id, cls = 'icon') => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
 // ─── Dados iniciais — espelho de Preferidos.html (última versão) ──────────────
 const INITIAL_DATA = [
   { id:'f-billing', type:'folder', emoji:'🧾', name:'Billing', items:[
@@ -639,16 +649,16 @@ function b64decode(b64){
 }
 function syncText(){
   if (!ghConfigured()) return '';
-  if (syncState === 'saving') return '⟳ salvando…';
-  if (syncState === 'ok')     return '✓ sync';
-  if (syncState === 'offline') return '⚠︎ offline (local)';
-  if (syncState === 'error')  return '⚠︎ ' + (syncMsg || 'erro');
+  if (syncState === 'saving') return sv('i-sync-run', 'icon spin') + ' salvando…';
+  if (syncState === 'ok')     return sv('i-sync-ok') + ' sync';
+  if (syncState === 'offline') return sv('i-offline') + ' offline (local)';
+  if (syncState === 'error')  return sv('i-sync-err') + ' ' + (syncMsg || 'erro');
   return '';
 }
 function updateSyncUI(msg){
   syncMsg = msg || '';
   const el = document.getElementById('sync-badge');
-  if (el) el.textContent = syncText();
+  if (el) el.innerHTML = syncText();
 }
 async function ghLoad(){
   const res = await fetch(
@@ -668,7 +678,7 @@ async function ghPush(retry = true){
   try {
     const body = {
       message: 'Atualiza Preferidos — ' + new Date().toISOString(),
-      content: b64encode(JSON.stringify(items, null, 1)),
+      content: b64encode(JSON.stringify({ v: 2, meta: collectMeta(), items }, null, 1)),
       branch: GH_BRANCH,
     };
     if (ghSha) body.sha = ghSha;
@@ -695,7 +705,7 @@ function showOfflineBanner(){
   if (document.getElementById('offline-banner')) return;
   const b = document.createElement('div');
   b.id = 'offline-banner'; b.className = 'offline-banner';
-  b.innerHTML = '<span>⚠︎ Sync indisponível — usando dados locais</span><button aria-label="fechar">✕</button>';
+  b.innerHTML = '<span>' + sv('i-offline') + ' Sync indisponível — usando dados locais</span><button aria-label="fechar">✕</button>';
   b.querySelector('button').addEventListener('click', () => b.remove());
   document.body.appendChild(b);
   setTimeout(() => b.remove(), 8000);                  // discreto: some sozinho
@@ -731,16 +741,9 @@ let editMode = false;
 let moveMode = false;      // ➡️ Mover: toque no item escolhe a pasta de destino
 let selectMode = false;    // ☑️ Selecionar: marca vários e move/exclui em lote
 let selectedIds = new Set();
-let editFull = false;      // ✏️ Editar: toque abre o modal completo (nome+URL+ícone+pasta)
 try { editMode = sessionStorage.getItem('editMode') === 'true'; } catch {}   // sobrevive ao reload
-try { editFull = sessionStorage.getItem('editFull') === 'true'; } catch {}
-function setEditFull(v){
-  editFull = v;
-  try { sessionStorage.setItem('editFull', v ? 'true' : 'false'); } catch {}
-}
 function setEditMode(v){
   editMode = v;
-  if (!v) setEditFull(false);                  // sair do modo edição limpa a variante
   try { sessionStorage.setItem('editMode', v ? 'true' : 'false'); } catch {}
 }
 
@@ -769,6 +772,20 @@ function renamePage(){
   lsSet(TITLE_KEY, n.trim() || 'Preferidos');
   document.title = pageTitle();
   render(); showToast('Página renomeada');
+  schedulePush();                              // nome viaja no data.json p/ todos os navegadores
+}
+function collectMeta(){                        // gravado dentro do data.json (v2)
+  return {
+    pageTitle: pageTitle(),
+    lastExportHtml: lsGet('last-export-html') || lsGet('last-backup') || '',
+    lastExportJson: lsGet('last-export-json') || '',
+  };
+}
+function applyMeta(meta){                      // remoto é a fonte da verdade
+  if (!meta) return;
+  if (meta.pageTitle) { lsSet(TITLE_KEY, meta.pageTitle); document.title = pageTitle(); }
+  if (meta.lastExportHtml) lsSet('last-export-html', String(meta.lastExportHtml));
+  if (meta.lastExportJson) lsSet('last-export-json', String(meta.lastExportJson));
 }
 
 // ─── Mais usados: contador de cliques LOCAL (por dispositivo, não sincroniza) ─
@@ -994,7 +1011,8 @@ function exportHtml(){
   a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
   a.download = new Date().toISOString().slice(0,10) + '-Preferidos' + '.html';
   document.body.appendChild(a); a.click(); a.remove();
-  lsSet('last-backup', String(Date.now()));
+  lsSet('last-export-html', String(Date.now()));
+  schedulePush();                              // data do export viaja p/ todos os navegadores
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }
 function walkDL(dl){
@@ -1269,7 +1287,8 @@ function showStats(){
     <div class="modal-title">${sv('i-chart')} Estatísticas</div>
     <div class="stat-row"><span>Preferidos</span><span>${favs}</span></div>
     <div class="stat-row"><span>Pastas</span><span>${folders}</span></div>
-    <div class="stat-row"><span>Último Export .html</span><span>${fmt('last-backup')}</span></div>
+    <div class="stat-row"><span>Último Export .html</span><span>${fmt('last-export-html') !== '—' ? fmt('last-export-html') : fmt('last-backup')}</span></div>
+    <div class="stat-row"><span>Último Export .json</span><span>${fmt('last-export-json')}</span></div>
     <div class="stat-row"><span>Última sincronização</span><span>${fmt('last-sync')}</span></div>
     ${tokRow}
     <div class="stat-row"><span>Duplicados</span><span>${dups.length || 'nenhum ✓'}</span></div>
@@ -1304,7 +1323,6 @@ function ctxForTile(x, y, tile){
     }});
     entries.push({ sep: true });
     entries.push({ icon:sv('i-edit'), label:'Editar', action: () => { modal = { mode:'edit', item: it }; render(); } });
-    entries.push({ icon:sv('i-edit'), label:'Renomear', action: () => { modal = { mode:'rename', item: it }; render(); } });
     entries.push({ icon:sv('i-move'), label:'Mover', action: () => ctxMoveMenu(x, y, it) });
     entries.push({ icon:sv('i-copy'), label:'Duplicar', action: () => duplicateItem(it.id) });
     entries.push({ icon:sv('i-az'), label:'A→Z', action: () => { sortListAZ(it.items || [], false); saveData(); render(); } });
@@ -1314,7 +1332,6 @@ function ctxForTile(x, y, tile){
     entries.push({ icon:sv('i-open'), label:'Abrir em Nova Aba', action: () => { if (it.url) window.open(it.url, '_blank'); } });
     entries.push({ sep: true });
     entries.push({ icon:sv('i-edit'), label:'Editar', action: () => { modal = { mode:'edit', item: it }; render(); } });
-    entries.push({ icon:sv('i-edit'), label:'Renomear', action: () => { modal = { mode:'rename', item: it }; render(); } });
     entries.push({ icon:sv('i-move'), label:'Mover', action: () => ctxMoveMenu(x, y, it) });
     entries.push({ icon:sv('i-copy'), label:'Duplicar', action: () => duplicateItem(it.id) });
     entries.push({ icon:sv('i-wand'), label:'Ícone', action: () => {
@@ -1394,12 +1411,12 @@ function render() {
     '<div class="grid' + (viewMode === 'list' ? ' list-view' : '') + '" id="grid">',
     displayItems.map(item => renderTile(item)).join(''),
     !displayItems.length && !searchQuery.trim() && path.length && !editMode && !sortMode && !moveMode
-      ? '<div class="empty-folder">📭 Esta pasta está vazia</div>' : '',
+      ? '<div class="empty-folder">' + sv('i-folder-open') + ' Esta pasta está vazia</div>' : '',
     '</div>',
     renderFooter(),
     '<input type="file" id="import-html-file" accept=".html,.htm,text/html" style="display:none">',
     '<input type="file" id="import-file" accept=".json,application/json" style="display:none">',
-    editMode && !searchQuery ? `<div class="hint">Toque no item para ${editFull ? 'editar' : 'renomear'} · Arraste para reordenar</div>` : '',
+    editMode && !searchQuery ? `<div class="hint">Toque no item para editar · Arraste para reordenar</div>` : '',
     moveMode && !searchQuery ? `<div class="hint">Toque no item para escolher a pasta de destino</div>` : '',
     selectMode && !searchQuery ? `<div class="hint">Toque nos itens para selecionar</div>` : '',
     selectMode && !searchQuery ? renderSelBar() : '',
@@ -1499,13 +1516,19 @@ function renderTile(item) {
     <button class="delete-btn" data-id="${item.id}">${sv('i-x')}</button>
     ${selectMode && !searchQuery ? `<span class="sel-badge">✓</span>` : ''}
     <div class="tile-icon">
-      ${isFolder ? (item.icon ? renderFavicon(item) : renderFolderPreview(item)) : renderFavicon(item)}
+      ${isFolder ? (item.icon ? renderFolderIconGrid(item) : renderFolderPreview(item)) : renderFavicon(item)}
     </div>
     <span class="tile-label">${isFolder ? (item.emoji ? item.emoji+' ' : '')+item.name : item.name}${item._inFolder ? `<br><small style="color:#aaa">${item._inFolder}</small>` : ''}</span>
     ${isFolder ? `<span class="tile-count">${(item.items || []).length} ${(item.items || []).length === 1 ? 'item' : 'itens'}</span>` : ''}
   </div>`;
 }
 
+function renderFolderIconGrid(folder){        // ícone do site × 4: mantém a cara de pasta
+  const s = folder.icon.replace(/"/g,'&quot;');
+  const l = (folder.name||'?')[0].toUpperCase();
+  const cell = `<img draggable="false" src="${s}" data-letter="${l}" onerror="miniImgErr(this)" alt="">`;
+  return `<div class="folder-preview">${cell.repeat(4)}</div>`;
+}
 function renderFolderPreview(folder) {
   const previews = (folder.items || []).slice(0, 4);
   if (!previews.length) return `<span class="folder-empty">📁</span>`;
@@ -1562,17 +1585,15 @@ function renderModal() {
     </div>`;
   }
   const isEdit   = m.mode === 'edit';
-  const isRename = m.mode === 'rename';
   const isMove   = m.mode === 'move';
-  const it = (isEdit || isRename || isMove) ? m.item : null;
+  const it = (isEdit || isMove) ? m.item : null;
   const isFolder = m.mode === 'add-folder' || (it && it.type === 'folder');
   const folders = allFolders().filter(f => !it || (f.id !== it.id && !(it.type==='folder' && isDescendant(it.id, f.id))));
   const parentList = it ? findParentList(it.id) : null;
   const currentParentId = it
     ? (parentList === items ? '' : (allFolders().find(f => findItem(f.id).items === parentList)?.id || ''))
     : (path[path.length-1] || '');
-  const title = isRename ? 'Renomear'
-              : isMove   ? `Mover ${isFolder ? 'Pasta' : 'Favorito'}`
+  const title = isMove   ? `Mover ${isFolder ? 'Pasta' : 'Favorito'}`
               : isEdit   ? (isFolder ? 'Editar Pasta' : 'Editar Favorito')
               : (isFolder ? 'Nova Pasta' : 'Novo Favorito');
   const folderSelect = `<div class="modal-label">Pasta</div>
@@ -1589,16 +1610,16 @@ function renderModal() {
       <input class="modal-input" id="form-icon" placeholder="dominio.com" value="${it ? iconUrlToField(it.icon||'').replace(/"/g,'&quot;') : ''}">` : ''}
       <div class="modal-label">Nome</div>
       <input class="modal-input" id="form-name" placeholder="Nome" value="${it ? it.name.replace(/"/g,'&quot;') : ''}">
-      ${!isFolder && !isRename ? `<div class="modal-label">URL</div><input class="modal-input" id="form-url" placeholder="URL (ex: google.com)" value="${it ? (it.url||'').replace(/"/g,'&quot;') : ''}">
+      ${!isFolder ? `<div class="modal-label">URL</div><input class="modal-input" id="form-url" placeholder="URL (ex: google.com)" value="${it ? (it.url||'').replace(/"/g,'&quot;') : ''}">
       <div class="modal-label">Ícone*</div>
       <div class="icon-row">
         <button type="button" class="icon-pull-btn" id="btn-auto-icon" title="Ícone do domínio principal">${sv('i-wand')}</button>
         <input class="modal-input" id="form-icon" placeholder="dominio.com" value="${it ? iconUrlToField(it.icon||'').replace(/"/g,'&quot;') : ''}">
       </div>` : ''}
-      ${isRename ? '' : folderSelect}`}
+      ${folderSelect}`}
       <div class="modal-actions">
         <button class="modal-cancel" id="modal-cancel">Cancelar</button>
-        <button class="modal-confirm" id="modal-confirm">${isMove ? 'Mover' : isRename || isEdit ? 'Salvar' : 'Adicionar'}</button>
+        <button class="modal-confirm" id="modal-confirm">${isMove ? 'Mover' : isEdit ? 'Salvar' : 'Adicionar'}</button>
       </div>
     </div>
   </div>`;
@@ -1610,7 +1631,8 @@ function exportJson(){
   a.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
   a.download = new Date().toISOString().slice(0,10) + '-backup-Preferidos' + '.json';
   document.body.appendChild(a); a.click(); a.remove();
-  lsSet('last-backup', String(Date.now()));
+  lsSet('last-export-json', String(Date.now()));
+  schedulePush();                              // data do export viaja p/ todos os navegadores
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }
 function tokenFlow(){
@@ -1621,8 +1643,7 @@ function tokenFlow(){
 function openHeaderMenu(btn){
   const r = btn.getBoundingClientRect();
   openCtx(r.right - 240, r.bottom + 6, [
-    { icon:sv('i-edit'), label:'Editar',     action: () => { setEditMode(true); setEditFull(true); render(); } },
-    { icon:sv('i-edit'), label:'Renomear',   action: () => { setEditMode(true); setEditFull(false); render(); } },
+    { icon:sv('i-edit'), label:'Editar',     action: () => { setEditMode(true); render(); } },
     { icon:sv('i-move'), label:'Mover',      action: () => { moveMode = true; render(); } },
     { icon:sv('i-select'), label:'Selecionar', action: () => { selectMode = true; selectedIds = new Set(); render(); } },
     { sep: true },
@@ -1736,8 +1757,8 @@ function attachEvents() {
       if (lpFired) { lpFired = false; return; }          // ignora clique pós long-press
       if (e.target.classList.contains('delete-btn')) return;
       const id = tile.dataset.id, type = tile.dataset.type;
-      if (editMode && !searchQuery) {          // Editar: modal completo · Renomear: só nome (e emoji)
-        modal = { mode: editFull ? 'edit' : 'rename', item: findItem(id) };
+      if (editMode && !searchQuery) {          // Editar: modal completo (nome+URL+ícone+pasta)
+        modal = { mode: 'edit', item: findItem(id) };
         render(); return;
       }
       if (moveMode && !searchQuery) {          // modo mover: só escolhe a pasta de destino
@@ -1814,18 +1835,6 @@ function submitModal() {
   const name = (document.getElementById('form-name')?.value || '').trim();
   if (!name) return;
 
-  if (modal.mode === 'rename') {               // só nome (e emoji/ícone de pasta): nada de URL/pasta
-    const it = modal.item;
-    it.name = name;
-    if (it.type === 'folder') {
-      it.emoji = (document.getElementById('form-emoji')?.value || '').trim();
-      const ic = iconFieldToUrl(document.getElementById('form-icon')?.value);
-      if (ic) it.icon = ic; else delete it.icon;
-    }
-    modal = null; saveData(); render();
-    showToast('Renomeado');
-    return;
-  }
   const destId = document.getElementById('form-folder')?.value || '';
   const isFolder = modal.mode === 'add-folder' || (modal.mode === 'edit' && modal.item.type === 'folder');
 
@@ -1905,6 +1914,7 @@ async function init(){
     const remote = await ghLoad();
     if (remote) {                                      // remoto é a fonte da verdade
       items = Array.isArray(remote) ? remote : (remote.items || items);
+      if (!Array.isArray(remote)) applyMeta(remote.meta);
       lsSet(DATA_KEY, JSON.stringify(items));
       syncState = 'ok'; lsSet('last-sync', String(Date.now())); render();
     } else {                                           // 1ª vez: cria data.json com o estado atual
