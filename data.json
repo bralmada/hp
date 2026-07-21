@@ -1,461 +1,469 @@
-[
- {
-  "id": "id-1783993145531-0njus",
-  "type": "folder",
-  "emoji": "🤖",
-  "name": "AI",
-  "items": [
-   {
-    "id": "id-1784006811458-r61c0jto",
-    "type": "bookmark",
-    "name": "ChatGPT",
-    "url": "https://chatgpt.com/"
-   },
-   {
-    "id": "id-1784004043458-6xu6d6pd",
-    "type": "bookmark",
-    "name": "DeepSeek",
-    "url": "https://www.deepseek.com/en/"
-   },
-   {
-    "id": "gemini",
-    "type": "bookmark",
-    "name": "Gemini",
-    "url": "https://gemini.google.com/app?hl=pt-BR"
-   },
-   {
-    "id": "id-1784006831530-32c9y1aa",
-    "type": "bookmark",
-    "name": "Grok",
-    "url": "https://grok.com/"
-   },
-   {
-    "id": "id-1783970466810-8cs6q",
-    "type": "bookmark",
-    "name": "MetaAi",
-    "url": "https://www.meta.ai/"
-   }
-  ]
+{
+ "v": 2,
+ "meta": {
+  "pageTitle": "Favoritos BA",
+  "lastExportHtml": "1784004732573",
+  "lastExportJson": ""
  },
- {
-  "id": "f-billing",
-  "type": "folder",
-  "emoji": "🧾",
-  "name": "Billing",
-  "items": [
-   {
-    "id": "b1",
-    "name": "CEMIG",
-    "url": "https://atende.cemig.com.br/Login",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=cemig.com.br"
-   },
-   {
-    "id": "b2",
-    "name": "Claro PF",
-    "url": "https://auth.claro.com.br/authorize?client_id=INT_AA_PORTALUNICO&response_type=code&scope=openid+minha_claro_dig+minha_net+net_devices+net_profile&redirect_uri=https%3A%2F%2Fclaro.com.br%2Fminha%2Farea-logada%2Fauth%2Fcallback&grant_type=authorization_code&nonce=abc123",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=claro.com.br"
-   },
-   {
-    "id": "b3",
-    "name": "Claro PJ",
-    "url": "https://minhaclaroempresas.claro.com.br",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=claro.com.br"
-   },
-   {
-    "id": "b4",
-    "name": "MEI Billing",
-    "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
-   }
-  ]
- },
- {
-  "id": "id-1784018965031-h466swjy",
-  "type": "folder",
-  "emoji": "🗝️",
-  "name": "CAC",
-  "items": [
-   {
-    "id": "f-cbs",
-    "type": "folder",
-    "emoji": "💈",
-    "name": "BC",
-    "items": [
-     {
-      "id": "c1",
-      "name": "AppBarber",
-      "url": "https://sistema.appbarber.com.br/login.php"
-     },
-     {
-      "id": "c2",
-      "name": "Barcode Lookup",
-      "url": "https://cosmos.bluesoft.com.br/",
-      "icon": "https://www.google.com/s2/favicons?sz=64&domain=bluesoft.com.br"
-     },
-     {
-      "id": "c3",
-      "name": "CBS Website",
-      "url": "https://www.barbeariacantarino.com/"
-     },
-     {
-      "id": "c4",
-      "name": "Titan Mail",
-      "url": "https://titan.hostgator.com.br/mail/"
-     },
-     {
-      "id": "c5",
-      "name": "Vnnox (Display)",
-      "url": "https://us.vnnox.com/#/login"
-     },
-     {
-      "id": "c6",
-      "name": "Yelsew",
-      "url": "https://yelsew.com.br/"
-     }
-    ]
-   },
-   {
-    "id": "f-social",
-    "type": "folder",
-    "emoji": "🛜",
-    "name": "Social",
-    "items": [
-     {
-      "id": "s1",
-      "name": "Influencer Check",
-      "url": "https://www.upfluence.com/?utm_source=organic&utm_campaign=direct"
-     },
-     {
-      "id": "s2",
-      "name": "Links WhatsApp",
-      "url": "https://api.chatpro.com.br/gerador-de-links"
-     },
-     {
-      "id": "s3",
-      "name": "Meta Business Suite",
-      "url": "https://business.facebook.com/latest/home?nav_ref=bm_home_redirect&business_id=186514359175309&asset_id=151640708033527"
-     },
-     {
-      "id": "t9",
-      "name": "Reels Downloader",
-      "url": "https://sssinstagram.com/pt/reels-downloader"
-     },
-     {
-      "id": "s4",
-      "name": "SEO AlsoAsked",
-      "url": "https://alsoasked.com/"
-     },
-     {
-      "id": "s5",
-      "name": "Youtube Studio",
-      "url": "https://studio.youtube.com/channel/UCl_Kf4f3zyBTXNDIS6CRoPA"
-     }
-    ]
-   },
-   {
-    "id": "t5",
-    "name": "HostGator",
-    "url": "https://financeiro.hostgator.com.br/index.php"
-   },
-   {
-    "id": "t7",
-    "name": "QR Code Generator",
-    "url": "https://genqrcode.com/"
-   },
-   {
-    "id": "t14",
-    "name": "WGSN Trends",
-    "url": "http://www.wgsn.com/en/trading/fashion-buying"
-   }
-  ]
- },
- {
-  "id": "f-gov",
-  "type": "folder",
-  "emoji": "🇧🇷",
-  "name": "Gov",
-  "items": [
-   {
-    "id": "g1",
-    "name": "Check DANFE",
-    "url": "https://consultadanfe.com/#"
-   },
-   {
-    "id": "g2",
-    "name": "Consumidor.gov",
-    "url": "https://www.consumidor.gov.br/pages/principal/"
-   },
-   {
-    "id": "g3",
-    "name": "e-CAC / DTE",
-    "url": "https://cav.receita.fazenda.gov.br/autenticacao",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
-   },
-   {
-    "id": "id-1783626801098-spo5u",
-    "type": "bookmark",
-    "name": "Escola Virtual Gov",
-    "url": "https://www.escolavirtual.gov.br/"
-   },
-   {
-    "id": "g4",
-    "name": "Free Gov Courses",
-    "url": "https://www.educacaonamao.com.br/r/cursos-gratuitos-do-governo-como-funcionam/"
-   },
-   {
-    "id": "g5",
-    "name": "Gov.br Portal",
-    "url": "https://www.gov.br/pt-br"
-   },
-   {
-    "id": "g6",
-    "name": "Issue Invoice (NFS-e)",
-    "url": "https://www.nfse.gov.br/EmissorNacional/",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
-   },
-   {
-    "id": "g7",
-    "name": "SINAL — Barbacena City Hall",
-    "url": "https://barbacena.mg.sinal.quasar.srv.br/alvara/login.xhtml",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=barbacena.mg.gov.br"
-   }
-  ]
- },
- {
-  "id": "f-pharma",
-  "type": "folder",
-  "emoji": "💊",
-  "name": "Pharma",
-  "items": [
-   {
-    "id": "p1",
-    "name": "Araújo",
-    "url": "https://www.araujo.com.br/"
-   },
-   {
-    "id": "p2",
-    "name": "CliqueFarma",
-    "url": "https://www.cliquefarma.com.br/",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=cliquefarma.com.br"
-   },
-   {
-    "id": "p3",
-    "name": "Drogasil",
-    "url": "https://www.drogasil.com.br/"
-   },
-   {
-    "id": "p4",
-    "name": "Indiana",
-    "url": "https://www.farmaciaindiana.com.br/"
-   },
-   {
-    "id": "p5",
-    "name": "Minas Mais",
-    "url": "https://www.drogariasminasmais.com.br/"
-   },
-   {
-    "id": "p6",
-    "name": "Pacheco",
-    "url": "https://www.drogariaspacheco.com.br/"
-   }
-  ]
- },
- {
-  "id": "f-rewards",
-  "type": "folder",
-  "emoji": "💰",
-  "name": "Shop",
-  "items": [
-   {
-    "id": "f-esfera",
-    "type": "folder",
-    "emoji": "⚪️",
-    "name": "Esfera",
-    "items": [
-     {
-      "id": "e1",
-      "name": "Casas Bahia",
-      "url": "https://www.esfera.com.vc/p/casasbahia/e000100177"
-     },
-     {
-      "id": "e2",
-      "name": "Extra",
-      "url": "https://www.esfera.com.vc/p/extracom/e000100178"
-     },
-     {
-      "id": "e3",
-      "name": "Fast Shop",
-      "url": "https://www.esfera.com.vc/p/fastshop/e000100585"
-     },
-     {
-      "id": "e4",
-      "name": "Kabum",
-      "url": "https://www.esfera.com.vc/p/kabum/e000100716"
-     },
-     {
-      "id": "e5",
-      "name": "Magalu",
-      "url": "https://www.esfera.com.vc/p/magalu/e000100100"
-     },
-     {
-      "id": "e6",
-      "name": "Ponto",
-      "url": "https://www.esfera.com.vc/p/ponto/e000100179"
-     },
-     {
-      "id": "e7",
-      "name": "Shopee",
-      "url": "https://www.esfera.com.vc/p/shopee/e000100697"
-     },
-     {
-      "id": "e8",
-      "name": "WebContinental",
-      "url": "https://www.esfera.com.vc/p/webcontinental/e000100582"
-     }
-    ]
-   },
-   {
-    "id": "f-livelo",
-    "type": "folder",
-    "emoji": "🩷",
-    "name": "Livelo",
-    "items": [
-     {
-      "id": "l1",
-      "name": "AliExpress",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/aliexpress/ALB"
-     },
-     {
-      "id": "l2",
-      "name": "Casas Bahia",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/casas-bahia/CSB"
-     },
-     {
-      "id": "l3",
-      "name": "Extra",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/extra/EXT"
-     },
-     {
-      "id": "l4",
-      "name": "Fast Shop",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/fast-shop/FST"
-     },
-     {
-      "id": "l5",
-      "name": "Kabum",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/kabum/KBM"
-     },
-     {
-      "id": "l6",
-      "name": "Mercado Livre",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/mercadolivre/MCL"
-     },
-     {
-      "id": "l7",
-      "name": "Ponto Frio",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/pontofrio/PTF"
-     },
-     {
-      "id": "l8",
-      "name": "Shopee",
-      "url": "https://www.livelo.com.br/juntar-pontos/parceiros/shopee/PEE"
-     }
-    ]
-   },
-   {
-    "id": "r1",
-    "name": "Esfera HUB",
-    "url": "https://www.esfera.com.vc/junte-pontos/junte-pontos/esf02163"
-   },
-   {
-    "id": "r2",
-    "name": "Livelo HUB",
-    "url": "https://www.livelo.com.br/juntar-pontos/todos-os-parceiros"
-   },
-   {
-    "id": "r3",
-    "name": "Smiles HUB",
-    "url": "https://shoppingsmiles.com.br/home"
-   },
-   {
-    "id": "r4",
-    "name": "Toca da Pizza",
-    "url": "https://pedido.anota.ai/loja/toca-da-pizza-delivery",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=anota.ai"
-   },
-   {
-    "id": "r5",
-    "name": "Visa Benefits",
-    "url": "https://visabenefitslac.axa-assistance.us/"
-   }
-  ]
- },
- {
-  "id": "f-tools",
-  "type": "folder",
-  "emoji": "🛠️",
-  "name": "Tools",
-  "items": [
-   {
-    "id": "t2",
-    "name": "Cambridge",
-    "url": "https://dictionary.cambridge.org/"
-   },
-   {
-    "id": "t1",
-    "name": "Canva",
-    "url": "https://www.canva.com/"
-   },
-   {
-    "id": "t3",
-    "name": "CorteCloud",
-    "url": "https://marceneiro.cortecloud.com.br/#/plans"
-   },
-   {
-    "id": "t4",
-    "name": "Face Search",
-    "url": "https://pimeyes.com/pt"
-   },
-   {
-    "id": "id-1783434925970-yt0cu",
-    "type": "bookmark",
-    "name": "GitHub",
-    "url": "https://github.com"
-   },
-   {
-    "id": "id-1784183113028-hiadti4b",
-    "type": "bookmark",
-    "name": "Lucide Icons",
-    "url": "https://lucide.dev/"
-   },
-   {
-    "id": "id-1783568348443-ly4si",
-    "type": "bookmark",
-    "name": "Proton Mail",
-    "url": "https://mail.proton.me/u/1/inbox",
-    "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
-   },
-   {
-    "id": "t10",
-    "name": "Shodan",
-    "url": "https://www.shodan.io/"
-   },
-   {
-    "id": "t11",
-    "name": "Site Trust (RA)",
-    "url": "https://www.reclameaqui.com.br/detector-site-confiavel/"
-   },
-   {
-    "id": "t12",
-    "name": "Site Trust (SC)",
-    "url": "https://www.siteconfiavel.com.br/"
-   }
-  ]
- },
- {
-  "id": "id-1784098173049-mf99ctww",
-  "type": "bookmark",
-  "name": "Brand‐Name to Generic",
-  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6493853/?utm_source=chatgpt.com"
- }
-]
+ "items": [
+  {
+   "id": "id-1783993145531-0njus",
+   "type": "folder",
+   "emoji": "🤖",
+   "name": "AI",
+   "items": [
+    {
+     "id": "id-1784006811458-r61c0jto",
+     "type": "bookmark",
+     "name": "ChatGPT",
+     "url": "https://chatgpt.com/"
+    },
+    {
+     "id": "id-1784004043458-6xu6d6pd",
+     "type": "bookmark",
+     "name": "DeepSeek",
+     "url": "https://www.deepseek.com/en/"
+    },
+    {
+     "id": "gemini",
+     "type": "bookmark",
+     "name": "Gemini",
+     "url": "https://gemini.google.com/app?hl=pt-BR"
+    },
+    {
+     "id": "id-1784006831530-32c9y1aa",
+     "type": "bookmark",
+     "name": "Grok",
+     "url": "https://grok.com/"
+    },
+    {
+     "id": "id-1783970466810-8cs6q",
+     "type": "bookmark",
+     "name": "MetaAi",
+     "url": "https://www.meta.ai/"
+    }
+   ]
+  },
+  {
+   "id": "f-billing",
+   "type": "folder",
+   "emoji": "🧾",
+   "name": "Billing",
+   "items": [
+    {
+     "id": "b1",
+     "name": "CEMIG",
+     "url": "https://atende.cemig.com.br/Login",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=cemig.com.br"
+    },
+    {
+     "id": "b2",
+     "name": "Claro PF",
+     "url": "https://auth.claro.com.br/authorize?client_id=INT_AA_PORTALUNICO&response_type=code&scope=openid+minha_claro_dig+minha_net+net_devices+net_profile&redirect_uri=https%3A%2F%2Fclaro.com.br%2Fminha%2Farea-logada%2Fauth%2Fcallback&grant_type=authorization_code&nonce=abc123",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=claro.com.br"
+    },
+    {
+     "id": "b3",
+     "name": "Claro PJ",
+     "url": "https://minhaclaroempresas.claro.com.br",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=claro.com.br"
+    },
+    {
+     "id": "b4",
+     "name": "MEI Billing",
+     "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Aplicacoes/ATSPO/pgmei.app/Identificacao",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
+    }
+   ]
+  },
+  {
+   "id": "id-1784018965031-h466swjy",
+   "type": "folder",
+   "emoji": "🗝️",
+   "name": "CAC",
+   "items": [
+    {
+     "id": "f-cbs",
+     "type": "folder",
+     "emoji": "💈",
+     "name": "BC",
+     "items": [
+      {
+       "id": "c1",
+       "name": "AppBarber",
+       "url": "https://sistema.appbarber.com.br/login.php"
+      },
+      {
+       "id": "c2",
+       "name": "Barcode Lookup",
+       "url": "https://cosmos.bluesoft.com.br/",
+       "icon": "https://www.google.com/s2/favicons?sz=64&domain=bluesoft.com.br"
+      },
+      {
+       "id": "c3",
+       "name": "CBS Website",
+       "url": "https://www.barbeariacantarino.com/"
+      },
+      {
+       "id": "c4",
+       "name": "Titan Mail",
+       "url": "https://titan.hostgator.com.br/mail/"
+      },
+      {
+       "id": "c5",
+       "name": "Vnnox (Display)",
+       "url": "https://us.vnnox.com/#/login"
+      },
+      {
+       "id": "c6",
+       "name": "Yelsew",
+       "url": "https://yelsew.com.br/"
+      }
+     ]
+    },
+    {
+     "id": "f-social",
+     "type": "folder",
+     "emoji": "🛜",
+     "name": "Social",
+     "items": [
+      {
+       "id": "s1",
+       "name": "Influencer Check",
+       "url": "https://www.upfluence.com/?utm_source=organic&utm_campaign=direct"
+      },
+      {
+       "id": "s2",
+       "name": "Links WhatsApp",
+       "url": "https://api.chatpro.com.br/gerador-de-links"
+      },
+      {
+       "id": "s3",
+       "name": "Meta Business Suite",
+       "url": "https://business.facebook.com/latest/home?nav_ref=bm_home_redirect&business_id=186514359175309&asset_id=151640708033527"
+      },
+      {
+       "id": "t9",
+       "name": "Reels Downloader",
+       "url": "https://sssinstagram.com/pt/reels-downloader"
+      },
+      {
+       "id": "s4",
+       "name": "SEO AlsoAsked",
+       "url": "https://alsoasked.com/"
+      },
+      {
+       "id": "s5",
+       "name": "Youtube Studio",
+       "url": "https://studio.youtube.com/channel/UCl_Kf4f3zyBTXNDIS6CRoPA"
+      }
+     ]
+    },
+    {
+     "id": "t5",
+     "name": "HostGator",
+     "url": "https://financeiro.hostgator.com.br/index.php"
+    },
+    {
+     "id": "t7",
+     "name": "QR Code Generator",
+     "url": "https://genqrcode.com/"
+    },
+    {
+     "id": "t14",
+     "name": "WGSN Trends",
+     "url": "http://www.wgsn.com/en/trading/fashion-buying"
+    }
+   ]
+  },
+  {
+   "id": "f-gov",
+   "type": "folder",
+   "emoji": "🇧🇷",
+   "name": "Gov",
+   "items": [
+    {
+     "id": "g1",
+     "name": "Check DANFE",
+     "url": "https://consultadanfe.com/#"
+    },
+    {
+     "id": "g2",
+     "name": "Consumidor.gov",
+     "url": "https://www.consumidor.gov.br/pages/principal/"
+    },
+    {
+     "id": "g3",
+     "name": "e-CAC / DTE",
+     "url": "https://cav.receita.fazenda.gov.br/autenticacao",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
+    },
+    {
+     "id": "id-1783626801098-spo5u",
+     "type": "bookmark",
+     "name": "Escola Virtual Gov",
+     "url": "https://www.escolavirtual.gov.br/"
+    },
+    {
+     "id": "g4",
+     "name": "Free Gov Courses",
+     "url": "https://www.educacaonamao.com.br/r/cursos-gratuitos-do-governo-como-funcionam/"
+    },
+    {
+     "id": "g5",
+     "name": "Gov.br Portal",
+     "url": "https://www.gov.br/pt-br"
+    },
+    {
+     "id": "g6",
+     "name": "Issue Invoice (NFS-e)",
+     "url": "https://www.nfse.gov.br/EmissorNacional/",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=gov.br"
+    },
+    {
+     "id": "g7",
+     "name": "SINAL — Barbacena City Hall",
+     "url": "https://barbacena.mg.sinal.quasar.srv.br/alvara/login.xhtml",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=barbacena.mg.gov.br"
+    }
+   ]
+  },
+  {
+   "id": "f-pharma",
+   "type": "folder",
+   "emoji": "💊",
+   "name": "Pharma",
+   "items": [
+    {
+     "id": "p1",
+     "name": "Araújo",
+     "url": "https://www.araujo.com.br/"
+    },
+    {
+     "id": "p2",
+     "name": "CliqueFarma",
+     "url": "https://www.cliquefarma.com.br/",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=cliquefarma.com.br"
+    },
+    {
+     "id": "p3",
+     "name": "Drogasil",
+     "url": "https://www.drogasil.com.br/"
+    },
+    {
+     "id": "p4",
+     "name": "Indiana",
+     "url": "https://www.farmaciaindiana.com.br/"
+    },
+    {
+     "id": "p5",
+     "name": "Minas Mais",
+     "url": "https://www.drogariasminasmais.com.br/"
+    },
+    {
+     "id": "p6",
+     "name": "Pacheco",
+     "url": "https://www.drogariaspacheco.com.br/"
+    }
+   ]
+  },
+  {
+   "id": "f-rewards",
+   "type": "folder",
+   "emoji": "💰",
+   "name": "Shop",
+   "items": [
+    {
+     "id": "f-esfera",
+     "type": "folder",
+     "emoji": "⚪️",
+     "name": "Esfera",
+     "items": [
+      {
+       "id": "e1",
+       "name": "Casas Bahia",
+       "url": "https://www.esfera.com.vc/p/casasbahia/e000100177"
+      },
+      {
+       "id": "e2",
+       "name": "Extra",
+       "url": "https://www.esfera.com.vc/p/extracom/e000100178"
+      },
+      {
+       "id": "e3",
+       "name": "Fast Shop",
+       "url": "https://www.esfera.com.vc/p/fastshop/e000100585"
+      },
+      {
+       "id": "e4",
+       "name": "Kabum",
+       "url": "https://www.esfera.com.vc/p/kabum/e000100716"
+      },
+      {
+       "id": "e5",
+       "name": "Magalu",
+       "url": "https://www.esfera.com.vc/p/magalu/e000100100"
+      },
+      {
+       "id": "e6",
+       "name": "Ponto",
+       "url": "https://www.esfera.com.vc/p/ponto/e000100179"
+      },
+      {
+       "id": "e7",
+       "name": "Shopee",
+       "url": "https://www.esfera.com.vc/p/shopee/e000100697"
+      },
+      {
+       "id": "e8",
+       "name": "WebContinental",
+       "url": "https://www.esfera.com.vc/p/webcontinental/e000100582"
+      }
+     ]
+    },
+    {
+     "id": "f-livelo",
+     "type": "folder",
+     "emoji": "🩷",
+     "name": "Livelo",
+     "items": [
+      {
+       "id": "l1",
+       "name": "AliExpress",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/aliexpress/ALB"
+      },
+      {
+       "id": "l2",
+       "name": "Casas Bahia",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/casas-bahia/CSB"
+      },
+      {
+       "id": "l3",
+       "name": "Extra",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/extra/EXT"
+      },
+      {
+       "id": "l4",
+       "name": "Fast Shop",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/fast-shop/FST"
+      },
+      {
+       "id": "l5",
+       "name": "Kabum",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/kabum/KBM"
+      },
+      {
+       "id": "l6",
+       "name": "Mercado Livre",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/mercadolivre/MCL"
+      },
+      {
+       "id": "l7",
+       "name": "Ponto Frio",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/pontofrio/PTF"
+      },
+      {
+       "id": "l8",
+       "name": "Shopee",
+       "url": "https://www.livelo.com.br/juntar-pontos/parceiros/shopee/PEE"
+      }
+     ]
+    },
+    {
+     "id": "r1",
+     "name": "Esfera HUB",
+     "url": "https://www.esfera.com.vc/junte-pontos/junte-pontos/esf02163"
+    },
+    {
+     "id": "r2",
+     "name": "Livelo HUB",
+     "url": "https://www.livelo.com.br/juntar-pontos/todos-os-parceiros"
+    },
+    {
+     "id": "r3",
+     "name": "Smiles HUB",
+     "url": "https://shoppingsmiles.com.br/home"
+    },
+    {
+     "id": "r4",
+     "name": "Toca da Pizza",
+     "url": "https://pedido.anota.ai/loja/toca-da-pizza-delivery",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=anota.ai"
+    },
+    {
+     "id": "r5",
+     "name": "Visa Benefits",
+     "url": "https://visabenefitslac.axa-assistance.us/"
+    }
+   ]
+  },
+  {
+   "id": "f-tools",
+   "type": "folder",
+   "emoji": "🛠️",
+   "name": "Tools",
+   "items": [
+    {
+     "id": "t2",
+     "name": "Cambridge",
+     "url": "https://dictionary.cambridge.org/"
+    },
+    {
+     "id": "t1",
+     "name": "Canva",
+     "url": "https://www.canva.com/"
+    },
+    {
+     "id": "t3",
+     "name": "CorteCloud",
+     "url": "https://marceneiro.cortecloud.com.br/#/plans"
+    },
+    {
+     "id": "t4",
+     "name": "Face Search",
+     "url": "https://pimeyes.com/pt"
+    },
+    {
+     "id": "id-1783434925970-yt0cu",
+     "type": "bookmark",
+     "name": "GitHub",
+     "url": "https://github.com"
+    },
+    {
+     "id": "id-1784183113028-hiadti4b",
+     "type": "bookmark",
+     "name": "Lucide Icons",
+     "url": "https://lucide.dev/"
+    },
+    {
+     "id": "id-1783568348443-ly4si",
+     "type": "bookmark",
+     "name": "Proton Mail",
+     "url": "https://mail.proton.me/u/1/inbox",
+     "icon": "https://www.google.com/s2/favicons?sz=64&domain=proton.me"
+    },
+    {
+     "id": "t10",
+     "name": "Shodan",
+     "url": "https://www.shodan.io/"
+    },
+    {
+     "id": "t11",
+     "name": "Site Trust (RA)",
+     "url": "https://www.reclameaqui.com.br/detector-site-confiavel/"
+    },
+    {
+     "id": "t12",
+     "name": "Site Trust (SC)",
+     "url": "https://www.siteconfiavel.com.br/"
+    }
+   ]
+  },
+  {
+   "id": "id-1784098173049-mf99ctww",
+   "type": "bookmark",
+   "name": "Brand‐Name to Generic",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6493853/?utm_source=chatgpt.com"
+  }
+ ]
+}
